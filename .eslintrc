@@ -1,0 +1,25 @@
+{
+  "extends": "airbnb",
+  "rules": {
+    "guard-for-in": "off",
+    "no-param-reassign": "off",
+    "consistent-return": "off",
+    "react/jsx-filename-extension": "off",
+    "react/prop-types": "off",
+    "react/no-did-mount-set-state": "off",
+    "react/prefer-stateless-function": "off",
+    "class-methods-use-this": "off",
+    "jsx-a11y/anchor-is-valid": [ "error", {
+      "components": [ "Link" ],
+      "specialLink": [ "hrefLeft", "hrefRight" ],
+      "aspects": [ "invalidHref", "preferButton" ]
+    }]
+  },
+  "globals": {
+    "window": true,
+    "document": true,
+    "fetch": true,
+    "Headers": true,
+    "Request": true
+  }
+}
