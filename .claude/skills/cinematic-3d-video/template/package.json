@@ -1,0 +1,9 @@
+{
+  "name": "cinematic-3d-video-project",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@fontsource-variable/manrope": "^5.0.0",
+    "three": "^0.170.0"
+  }
+}
