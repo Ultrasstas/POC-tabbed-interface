@@ -78,7 +78,7 @@ export default {
     S.needle = group({ pos: [0.27, 0.42, 0.228], parent: radio });
     box(0.008, 0.17, 0.004, mat.glow(0xff3b20, 1.4), { pos: [0, 0.07, 0], r: 0.001, parent: S.needle, cast: false });
     cyl(0.022, 0.022, 0.012, mat.brass(), { pos: [0, 0, 0.002], rot: [Math.PI / 2, 0, 0], parent: S.needle });
-    cyl(0.2, 0.2, 0.004, mat.glass(0xfff4e0, { transmission: 0.96, roughness: 0.02 }), { pos: [0.27, 0.42, 0.236], rot: [Math.PI / 2, 0, 0], parent: radio, cast: false });
+    cyl(0.2, 0.2, 0.004, mat.glass(0xfff4e0), { pos: [0.27, 0.42, 0.236], rot: [Math.PI / 2, 0, 0], parent: radio, cast: false });
     // knobs
     S.knobs = [0.13, 0.41].map((x) => { const k = group({ pos: [x, 0.155, 0.21], rot: [Math.PI / 2, 0, 0], parent: radio });
       cyl(0.04, 0.046, 0.05, mat.brass({ roughness: 0.3 }), { pos: [0, 0.025, 0], parent: k });

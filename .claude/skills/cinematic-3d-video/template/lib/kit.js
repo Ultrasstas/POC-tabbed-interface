@@ -121,7 +121,7 @@ export function createStage(def) {
   const key = new THREE.DirectionalLight(look.key.color, look.key.intensity);
   key.position.set(...look.key.pos);
   key.castShadow = true;
-  key.shadow.mapSize.set(4096, 4096);
+  key.shadow.mapSize.set(def.shadowMapSize || 2048, def.shadowMapSize || 2048);
   key.shadow.bias = -0.0004; key.shadow.normalBias = 0.02; key.shadow.radius = 5;
   const sc = key.shadow.camera; sc.left = -6; sc.right = 6; sc.top = 6; sc.bottom = -6; sc.near = 0.5; sc.far = 30;
   const fill = new THREE.HemisphereLight(look.fill.sky, look.fill.ground, look.fill.intensity);
@@ -199,7 +199,8 @@ export const mat = {
   matte: (c = 0x888888, o = {}) => new THREE.MeshStandardMaterial({ color: c, roughness: 0.92, ...o }),
   metal: (c = 0xc9c9c9, o = {}) => new THREE.MeshStandardMaterial({ color: c, metalness: 1, roughness: 0.28, ...o }),
   brass: (o = {}) => new THREE.MeshStandardMaterial({ color: 0xc89b4a, metalness: 1, roughness: 0.32, ...o }),
-  glass: (c = 0xffffff, o = {}) => new THREE.MeshPhysicalMaterial({ color: c, roughness: 0.05, transmission: 0.9, thickness: 0.2, ior: 1.45, transparent: true, ...o }),
+  // Cheap glass: a faint reflective sheet. Real `transmission` re-renders the whole scene per frame; opt in only for a hero close-up.
+  glass: (c = 0xffffff, o = {}) => new THREE.MeshPhysicalMaterial({ color: c, roughness: 0.05, metalness: 0, transparent: true, opacity: 0.14, clearcoat: 1, depthWrite: false, ...o }),
   glow: (c = 0xffc070, intensity = 4, o = {}) => new THREE.MeshStandardMaterial({ color: 0x000000, emissive: c, emissiveIntensity: intensity, ...o }),
   textured: (map, o = {}) => new THREE.MeshStandardMaterial({ map, roughness: 0.6, ...o }),
 };

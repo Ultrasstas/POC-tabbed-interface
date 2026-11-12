@@ -44,8 +44,9 @@ Spend your effort there.
    ```bash
    node <skill>/scripts/render.cjs <project> --workers 4 --out <project>/out/video.mp4 [--audio music.mp3]
    ```
-   Software WebGL renders roughly 1–3 frames/s at 1080×1920, so a 14 s clip takes a few minutes: run it
-   in the background. `--from/--to` (seconds) re-renders just one shot.
+   On CPU-only (software WebGL) machines expect about 1–2 s per frame at 1080×1920 with 4 workers, so a
+   14 s clip takes roughly 10 minutes: run it in the background. `--scale 0.667` gives 720×1280 in about
+   half the time; `--from/--to` (seconds) re-renders just one shot.
 
 ## Scene contract
 
