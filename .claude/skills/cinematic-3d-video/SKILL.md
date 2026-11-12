@@ -124,7 +124,7 @@ Rules that keep renders correct:
 - Needs Node, `playwright` with Chromium, and `ffmpeg` on PATH. WebGL runs on SwiftShader (CPU), so it
   works in containers and CI. On a machine with a GPU, live-preview by serving the project folder
   (`npx serve <project>`) and opening `index.html`; `?t=3.2` freezes a time.
-- `--scale 0.5` for drafts, `--crf 14–20` for quality/size, `--workers N` ≈ CPU cores.
+- `--scale 0.5` for drafts, `--crf` 18–24 for quality/size (film grain makes low values very large), `--workers N` ≈ CPU cores.
 - If stills show a black frame, check the console lines the renderer prints (`[page error]`), then that
   every mesh actually has a parent and the camera `look` target is where the subject is.
 - For more look presets or new atmosphere helpers, extend `LOOKS` and the helpers in `lib/kit.js` rather

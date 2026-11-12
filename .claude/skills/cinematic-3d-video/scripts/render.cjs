@@ -16,7 +16,7 @@ try { ({ chromium } = require('playwright')); } catch { console.error('playwrigh
 const argv = process.argv.slice(2);
 const dir = path.resolve(argv.find((a) => !a.startsWith('--')) || '.');
 const opt = (k, d) => { const i = argv.indexOf('--' + k); return i >= 0 ? argv[i + 1] : d; };
-const scale = parseFloat(opt('scale', '1')), workers = parseInt(opt('workers', '3'), 10), crf = opt('crf', '16');
+const scale = parseFloat(opt('scale', '1')), workers = parseInt(opt('workers', '3'), 10), crf = opt('crf', '21');
 const out = path.resolve(opt('out', path.join(dir, 'out', 'video.mp4')));
 const MIME = { '.html': 'text/html', '.js': 'text/javascript', '.mjs': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.png': 'image/png', '.jpg': 'image/jpeg', '.svg': 'image/svg+xml', '.woff2': 'font/woff2', '.glb': 'model/gltf-binary', '.hdr': 'application/octet-stream', '.mp3': 'audio/mpeg' };
 
