@@ -1,0 +1,12 @@
+{
+  "name": "cutout-story-video-project",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@fontsource-variable/manrope": "^5.0.0",
+    "@fontsource-variable/oswald": "^5.0.0",
+    "@fontsource/dela-gothic-one": "^5.0.0",
+    "@fontsource/rubik-dirt": "^5.0.0",
+    "@fontsource-variable/caveat": "^5.0.0"
+  }
+}

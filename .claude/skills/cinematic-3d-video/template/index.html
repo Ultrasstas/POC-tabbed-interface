@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>cinematic-3d-video</title>
+<link rel="stylesheet" href="./node_modules/@fontsource-variable/manrope/index.css">
+<style>
+  html, body { margin: 0; background: #000; overflow: hidden; }
+  #frame { position: absolute; left: 0; top: 0; width: var(--w); height: var(--h); transform-origin: 0 0; overflow: hidden; }
+  #gl { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  #overlay { position: absolute; inset: 0; font-family: 'Manrope Variable', system-ui, sans-serif; color: #fff; }
+
+  /* Captions: big, tight, centered; one idea per card. */
+  .cap { position: absolute; left: calc(90 * var(--u)); right: calc(90 * var(--u)); text-align: center;
+         font-weight: 700; font-size: calc(76 * var(--u)); line-height: 1.08; letter-spacing: -0.025em;
+         text-shadow: 0 calc(4 * var(--u)) calc(30 * var(--u)) rgba(0,0,0,.55); text-wrap: balance; }
+  .cap-top { top: 12%; } .cap-bottom { bottom: 13%; } .cap-center { top: 50%; transform: translateY(-50%); }
+  .cap .w { display: inline-block; will-change: transform, opacity; }
+  .cap .w.dim { color: rgba(255,255,255,.42); }
+  .cap .w i { font-style: normal; color: #7dffb0; }           /* accent punctuation */
+
+  /* Callout labels: small caps + hairline leader. */
+  .leaders { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .leaders path { stroke: rgba(255,255,255,.9); fill: none; }
+  .leaders circle { fill: #fff; }
+  .label { position: absolute; font-weight: 600; font-size: calc(24 * var(--u)); letter-spacing: .22em;
+           text-transform: uppercase; white-space: nowrap; padding: 0 calc(10 * var(--u));
+           text-shadow: 0 0 calc(12 * var(--u)) rgba(0,0,0,.7); }
+  .note { position: absolute; left: calc(40 * var(--u)); bottom: calc(60 * var(--u)); font-size: calc(20 * var(--u));
+          font-weight: 500; letter-spacing: .02em; transition: none; }
+</style>
+<script type="importmap">
+{ "imports": {
+    "three": "./node_modules/three/build/three.module.js",
+    "three/addons/": "./node_modules/three/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+<div id="frame"><canvas id="gl"></canvas><div id="overlay"></div></div>
+<script type="module">
+  import { boot } from './lib/kit.js';
+  import def from './scene.js';
+  boot(def).catch((e) => { console.error(e); window.__error = String(e && e.stack || e); });
+</script>
+</body>
+</html>
