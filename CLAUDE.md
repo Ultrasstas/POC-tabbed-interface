@@ -14,3 +14,7 @@
 - `cinematic-3d-video`, `story-art-prompts`, `cutout-story-video` — code-rendered video and image-prompt skills (no Higgsfield).
 - `higgsfield-faceless-script`, `higgsfield-faceless-production`, `higgsfield-youtube-packaging` — What-if / faceless pipeline.
 - The owner's recurring characters for illustrated videos: a Black Cat and a French Bulldog (designs in progress).
+
+## Reference notes
+
+- `.claude/notes/ai-short-drama-workflow.md` — how to build a realistic AI short drama (story structure, character sheets, set image, scene-by-scene generation, fixing takes). Read it before planning a short drama.
