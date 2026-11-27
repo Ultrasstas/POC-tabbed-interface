@@ -33,13 +33,14 @@ def _parse_ids(raw: str) -> frozenset[int]:
 
 
 def load_config() -> Config:
-    admin_ids = _parse_ids(_required("ADMIN_IDS"))
-    if not admin_ids:
-        raise RuntimeError("ADMIN_IDS must contain at least one Telegram user ID")
+    # ADMIN_IDS and TEAM_CHAT_ID may be empty on the very first launch:
+    # the bot then runs in setup mode so the team can learn their IDs with /id.
+    admin_ids = _parse_ids(os.environ.get("ADMIN_IDS", ""))
+    team_chat = os.environ.get("TEAM_CHAT_ID", "").strip()
     return Config(
         bot_token=_required("BOT_TOKEN"),
         database_url=_required("DATABASE_URL"),
-        team_chat_id=int(_required("TEAM_CHAT_ID")),
+        team_chat_id=int(team_chat) if team_chat else 0,
         admin_ids=admin_ids,
         crypto_pay_token=os.environ.get("CRYPTO_PAY_TOKEN", "").strip() or None,
         crypto_pay_testnet=os.environ.get("CRYPTO_PAY_TESTNET", "").strip().lower() in ("1", "true", "yes"),

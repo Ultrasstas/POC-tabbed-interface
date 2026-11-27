@@ -23,6 +23,9 @@ CUSTOMER_NOTICE = {
 
 
 async def post_team_card(bot: Bot, cfg: Config, db: Database, order_id: int) -> None:
+    if not cfg.team_chat_id:
+        log.warning("TEAM_CHAT_ID is not set: order %s was not posted to the team", order_id)
+        return
     order = await db.order(order_id)
     items = await db.order_items(order_id)
     try:
@@ -41,7 +44,7 @@ async def refresh_team_card(bot: Bot, cfg: Config, db: Database, order_id: int, 
         return
     items = await db.order_items(order_id)
     text = team_order_text(order, items, last_action)
-    if order["team_message_id"]:
+    if order["team_message_id"] and cfg.team_chat_id:
         try:
             await bot.edit_message_text(
                 text, chat_id=cfg.team_chat_id, message_id=order["team_message_id"],

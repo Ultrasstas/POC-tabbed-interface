@@ -93,6 +93,9 @@ async def run() -> None:
     ])
 
     watcher = asyncio.create_task(crypto_watcher(bot, cfg, db, cryptopay)) if cryptopay else None
+    if not cfg.admin_ids or not cfg.team_chat_id:
+        log.warning("SETUP MODE: ADMIN_IDS or TEAM_CHAT_ID is empty. Send /id to the bot and in the team group, "
+                    "then set both variables. Team buttons and order cards are disabled until then.")
     log.info("Bot started (crypto payments: %s)", "on" if cryptopay else "off")
     try:
         await dp.start_polling(bot, allowed_updates=dp.resolve_used_update_types())

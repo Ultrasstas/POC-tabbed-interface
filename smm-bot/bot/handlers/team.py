@@ -141,6 +141,9 @@ support = Router(name="support")
 @support.message(F.chat.type == "private", F.text & ~F.text.startswith("/"))
 async def customer_message(message: Message, bot: Bot, cfg: Config) -> None:
     """Free text from a customer outside the order flow goes to the team chat."""
+    if not cfg.team_chat_id:
+        await message.answer("/start")
+        return
     u = message.from_user
     who = escape(u.first_name or "")
     if u.username:
